@@ -1,4 +1,4 @@
-import { Dimensions,PixelRatio,Platform } from "react-native";
+import { Dimensions, PixelRatio, Platform } from "react-native";
 import { isIphoneX } from "react-native-iphone-x-helper";
 
 /**
@@ -6,10 +6,10 @@ import { isIphoneX } from "react-native-iphone-x-helper";
  * Used for scaling calculations
  */
 const SCREEN_CONSTANTS = {
-  PHONE_BASE_HEIGHT: 680,    // Standard 5" phone screen height
-  TABLET_BASE_HEIGHT: 1426,  // Standard tablet screen height
-  TABLET_MIN_DP: 1100,      // Minimum diagonal size for tablets (~7 inches)
-  IOS_NOTCH_HEIGHT: 78,     // iPhone X+ notch height in portrait
+  PHONE_BASE_HEIGHT: 680, // Standard 5" phone screen height
+  TABLET_BASE_HEIGHT: 1426, // Standard tablet screen height
+  TABLET_MIN_DP: 1100, // Minimum diagonal size for tablets (~7 inches)
+  IOS_NOTCH_HEIGHT: 78, // iPhone X+ notch height in portrait
 };
 
 /**
@@ -19,17 +19,17 @@ const SCREEN_CONSTANTS = {
  * @returns {boolean} True if device is a tablet
  */
 function isTablet() {
-  const { height,width } = Dimensions.get('window');
+  const { height, width } = Dimensions.get("window");
 
   // iOS tablet detection (iPad)
-  if (Platform.OS === 'ios') {
-    const dimension = Math.max(width,height);
+  if (Platform.OS === "ios") {
+    const dimension = Math.max(width, height);
     return dimension >= 1024;
   }
 
   // Android tablet detection
   const pixelDensity = PixelRatio.get();
-  const screenDiagonalDP = Math.sqrt(Math.pow(width,2) + Math.pow(height,2));
+  const screenDiagonalDP = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
   return screenDiagonalDP >= SCREEN_CONSTANTS.TABLET_MIN_DP && pixelDensity < 2;
 }
 
@@ -39,7 +39,7 @@ function isTablet() {
  * @returns {number} Calculated font size in pixels (rounded)
  */
 export function RFPercentage(percent) {
-  const { height,width } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
   const isPortrait = height > width;
   const standardLength = isPortrait ? height : width;
 
@@ -62,22 +62,29 @@ export function RFPercentage(percent) {
  * @param {number} standardScreenHeight - Reference device height (default: PHONE_BASE_HEIGHT)
  * @returns {number} Calculated font size in pixels (rounded)
  */
-export function RFValue(fontSize,standardScreenHeight = SCREEN_CONSTANTS.PHONE_BASE_HEIGHT) {
+export function RFValue(
+  fontSize,
+  standardScreenHeight = SCREEN_CONSTANTS.PHONE_BASE_HEIGHT
+) {
   if (fontSize === 0) return 0;
 
-  const { height,width } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
   const isPortrait = height > width;
   const standardLength = isPortrait ? height : width;
 
   // For Android tablets, use tablet base height and additional scaling
   if (Platform.OS === "android" && isTablet()) {
     standardScreenHeight = SCREEN_CONSTANTS.TABLET_BASE_HEIGHT;
-    return Math.round((fontSize * standardLength) / standardScreenHeight * 0.6);
+    return Math.round(
+      ((fontSize * standardLength) / standardScreenHeight) * 0.6
+    );
   }
 
   // For iPhone X, use a slight scaling factor instead of height reduction
   if (Platform.OS === "ios" && isIphoneX() && isPortrait) {
-    return Math.round((fontSize * standardLength) / standardScreenHeight * 0.92);
+    return Math.round(
+      ((fontSize * standardLength) / standardScreenHeight) * 0.92
+    );
   }
 
   return Math.round((fontSize * standardLength) / standardScreenHeight);

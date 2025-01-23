@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.77% </span>
+                <span class="strong">96.15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/71</span>
+                <span class='fraction'>75/78</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.77% </span>
+                <span class="strong">96.15% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/71</span>
+                <span class='fraction'>75/78</span>
             </div>
         
             
@@ -147,7 +147,14 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,6 +219,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
@@ -220,6 +230,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -228,10 +240,12 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Dimensions,PixelRatio,Platform } from "react-native";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Dimensions, PixelRatio, Platform } from "react-native";
 import { isIphoneX } from "react-native-iphone-x-helper";
 &nbsp;
 /**
@@ -239,10 +253,10 @@ import { isIphoneX } from "react-native-iphone-x-helper";
  * Used for scaling calculations
  */
 const SCREEN_CONSTANTS = {
-  PHONE_BASE_HEIGHT: 680,    // Standard 5" phone screen height
-  TABLET_BASE_HEIGHT: 1426,  // Standard tablet screen height
-  TABLET_MIN_DP: 1100,      // Minimum diagonal size for tablets (~7 inches)
-  IOS_NOTCH_HEIGHT: 78,     // iPhone X+ notch height in portrait
+  PHONE_BASE_HEIGHT: 680, // Standard 5" phone screen height
+  TABLET_BASE_HEIGHT: 1426, // Standard tablet screen height
+  TABLET_MIN_DP: 1100, // Minimum diagonal size for tablets (~7 inches)
+  IOS_NOTCH_HEIGHT: 78, // iPhone X+ notch height in portrait
 };
 &nbsp;
 /**
@@ -252,17 +266,17 @@ const SCREEN_CONSTANTS = {
  * @returns {boolean} True if device is a tablet
  */
 function isTablet() {
-  const { height,width } = Dimensions.get('window');
+  const { height, width } = Dimensions.get("window");
 &nbsp;
   // iOS tablet detection (iPad)
-  if (Platform.OS === 'ios') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    const dimension = Math.max(width,height);</span>
+  if (Platform.OS === "ios") <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >    const dimension = Math.max(width, height);</span>
 <span class="cstat-no" title="statement not covered" >    return dimension &gt;= 1024;</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
   // Android tablet detection
   const pixelDensity = PixelRatio.get();
-  const screenDiagonalDP = Math.sqrt(Math.pow(width,2) + Math.pow(height,2));
+  const screenDiagonalDP = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
   return screenDiagonalDP &gt;= SCREEN_CONSTANTS.TABLET_MIN_DP &amp;&amp; pixelDensity &lt; 2;
 }
 &nbsp;
@@ -272,7 +286,7 @@ function isTablet() {
  * @returns {number} Calculated font size in pixels (rounded)
  */
 export function RFPercentage(percent) {
-  const { height,width } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
   const isPortrait = height &gt; width;
   const standardLength = isPortrait ? height <span class="branch-0 cbranch-no" title="branch not covered" >: width;</span>
 &nbsp;
@@ -295,22 +309,29 @@ export function RFPercentage(percent) {
  * @param {number} standardScreenHeight - Reference device height (default: PHONE_BASE_HEIGHT)
  * @returns {number} Calculated font size in pixels (rounded)
  */
-export function RFValue(fontSize,standardScreenHeight = SCREEN_CONSTANTS.PHONE_BASE_HEIGHT) {
+export function RFValue(
+  fontSize,
+  standardScreenHeight = SCREEN_CONSTANTS.PHONE_BASE_HEIGHT
+) {
   if (fontSize === 0) return 0;
 &nbsp;
-  const { height,width } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
   const isPortrait = height &gt; width;
   const standardLength = isPortrait ? height : width;
 &nbsp;
   // For Android tablets, use tablet base height and additional scaling
   if (Platform.OS === "android" &amp;&amp; isTablet()) {
     standardScreenHeight = SCREEN_CONSTANTS.TABLET_BASE_HEIGHT;
-    return Math.round((fontSize * standardLength) / standardScreenHeight * 0.6);
+    return Math.round(
+      ((fontSize * standardLength) / standardScreenHeight) * 0.6
+    );
   }
 &nbsp;
   // For iPhone X, use a slight scaling factor instead of height reduction
   if (Platform.OS === "ios" &amp;&amp; isIphoneX() &amp;&amp; isPortrait) {
-    return Math.round((fontSize * standardLength) / standardScreenHeight * 0.92);
+    return Math.round(
+      ((fontSize * standardLength) / standardScreenHeight) * 0.92
+    );
   }
 &nbsp;
   return Math.round((fontSize * standardLength) / standardScreenHeight);
@@ -322,7 +343,7 @@ export function RFValue(fontSize,standardScreenHeight = SCREEN_CONSTANTS.PHONE_B
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-23T09:18:11.606Z
+                at 2025-01-23T09:29:57.073Z
             </div>
         <script src="prettify.js"></script>
         <script>
