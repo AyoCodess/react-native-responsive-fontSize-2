@@ -139,8 +139,3 @@ const styles = StyleSheet.create({
 #### Changelog
 
 [releases](https://github.com/heyman333/react-native-responsive-fontSize/releases)
-
-#### Load map (I'm waiting for your help)
-
-- [x] support landscape mode
-- [x] make `test code`
