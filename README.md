@@ -14,9 +14,9 @@ A utility for responsive font scaling in React Native applications, with improve
 ## Installation
 
 ```bash
-npm install react-native-responsive-fontsize
+npm install react-native-responsive-fontsize-2
 # or
-yarn add react-native-responsive-fontsize
+yarn add react-native-responsive-fontsize-2
 ```
 
 ## Usage
