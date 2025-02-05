@@ -119,7 +119,7 @@ npm install react-native-responsive-fontsize-2 --save
 #### Usage
 
 ```js
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize-2";
 
 const styles = StyleSheet.create({
   welcome: {
