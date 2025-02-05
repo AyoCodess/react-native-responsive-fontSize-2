@@ -94,9 +94,9 @@ MIT
 #### How to install
 
 ```shell
-yarn add react-native-responsive-fontsize
+yarn add react-native-responsive-fontsize-2
 # or
-npm install react-native-responsive-fontsize --save
+npm install react-native-responsive-fontsize-2 --save
 ```
 
 #### How it looks on different device sizes
